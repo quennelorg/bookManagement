@@ -1,8 +1,7 @@
 package com.quennel.bookapi.controller;
 
 import com.quennel.bookapi.models.Book;
-import com.quennel.bookapi.repository.BookRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.quennel.bookapi.service.BookService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,16 +10,24 @@ import java.util.List;
 @RequestMapping("/book")
 public class BookController {
 
-    @Autowired
-    private BookRepository bookRepository;
+    private final BookService bookService;
+
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
+    }
 
     @PostMapping
     public Book save(@RequestBody Book book) {
-        return bookRepository.save(book);
+        return bookService.save(book);
     }
 
     @GetMapping
     public List<Book> findAll() {
-        return bookRepository.findAll();
+        return bookService.findAll();
+    }
+
+    @DeleteMapping
+    public List<Book> deleteById(@RequestParam Long id) {
+        return bookService.deleteById(id);
     }
 }
