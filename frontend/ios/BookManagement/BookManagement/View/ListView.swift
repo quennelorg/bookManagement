@@ -17,7 +17,11 @@ struct ListView: View {
         NavigationView {
             List(bookViewModel.books, id:\.id) { item in
                 ListItemView(book: item)
-            }.onAppear {
+            }
+            .onAppear {
+                bookViewModel.getBooks()
+            }
+            .onChange(of: refreshBookList) { oldState, newState in
                 bookViewModel.getBooks()
             }
             .listStyle(.plain)
