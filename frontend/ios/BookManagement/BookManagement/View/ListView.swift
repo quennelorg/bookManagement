@@ -51,7 +51,7 @@ struct ListView: View {
             .sheet(isPresented: $showDetailView, content: {
                 DetailView(
                     bookViewModel: bookViewModel,
-                    showBookDetailView: $showDetailView,
+                    showDetailView: $showDetailView,
                     selectedBook: $selectedBook,
                     refreshBookList: $refreshBookList
                 )

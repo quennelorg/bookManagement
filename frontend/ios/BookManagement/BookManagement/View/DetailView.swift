@@ -13,6 +13,7 @@ struct DetailView: View {
     @Binding var showDetailView: Bool
     @Binding var selectedBook: Book
     @Binding var refreshBookList: Bool
+    @State private var showDeleteAlert: Bool = false
     
     var bindingDate: Binding<Date> {
         Binding<Date>(
@@ -37,16 +38,28 @@ struct DetailView: View {
                                 }
                 Section{
                     Button {
-                        if(bookViewModel.deleteBook(book: selectedBook)) {
-                            showDetailView.toggle()
-                            refreshBookList.toggle()
-                        }
-                        
+                        showDeleteAlert.toggle()
                     } label: {
                         Text("Delete")
                             .fontWeight(.bold)
                             .foregroundColor(.red)
                             .frame(maxWidth: .infinity, alignment: .center)
+                    }.alert("Delete", isPresented: $showDeleteAlert) {
+                        Button(role: .destructive) {
+                            showDetailView.toggle()
+                        } label: {
+                            Text("No")
+                        }
+                        Button {
+                            if(bookViewModel.deleteBook(book: selectedBook)) {
+                                showDetailView.toggle()
+                                refreshBookList.toggle()
+                            }
+                        } label: {
+                            Text("Yes")
+                        }
+                    } message: {
+                        Text("Are you sure delete the book \(selectedBook.title)?")
                     }
                 }
             }.navigationTitle("Book Detail")
