@@ -8,22 +8,23 @@
 import SwiftUI
 
 struct ListItemView: View {
+    var book: Book
     var body: some View {
         HStack {
             Image(systemName: "book.closed.fill")
                 .resizable()
                 .frame(width: 40, height: 40)
                 .padding()
-                .foregroundColor(.blue)
+                .foregroundColor(getRandomColor())
             VStack(alignment: .leading) {
-                Text("12")
+                Text(book.title)
                     .font(.title)
                 HStack {
-                    Text("123").font(.subheadline)
+                    Text(book.author).font(.subheadline)
                     Spacer()
-                    Text("1234").font(.subheadline)
+                    Text(book.publishedDate).font(.subheadline)
                 }
-                Text("isbn")
+                Text(book.isbn)
                     .font(.subheadline)
                     .foregroundColor(.gray)
             }
@@ -33,5 +34,5 @@ struct ListItemView: View {
 }
 
 #Preview {
-    ListItemView()
+    ListItemView(book: mockBook[0])
 }
