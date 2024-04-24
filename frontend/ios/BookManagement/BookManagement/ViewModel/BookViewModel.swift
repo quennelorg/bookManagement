@@ -13,6 +13,11 @@ final class BookViewModel: ObservableObject {
     private var tempBook: [Book] = []
     
     func getBooks() {
-        books = mockBook
+        books = tempBook
+    }
+    
+    func addBook(book: Book) -> Bool {
+        tempBook.append(book)
+        return true
     }
 }

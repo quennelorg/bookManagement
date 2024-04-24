@@ -11,6 +11,8 @@ struct AddBookView: View {
     
     @StateObject var bookViewModel: BookViewModel
     @State private var newBook: Book = Book(id: "", title: "", author: "", isbn: "", publishedDate: Date().toString())
+    @Binding var showAddBookView: Bool
+    @Binding var refreshBookList: Bool
     
     var bindingDate: Binding<Date> {
         Binding<Date>(
@@ -37,14 +39,14 @@ struct AddBookView: View {
                 .toolbar{
                     ToolbarItem(placement: .topBarLeading) {
                         Button {
-                            print("cancel")
+                            showAddBookView.toggle()
                         } label: {
                             Text("Cancel")
                         }
                     }
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
-                           print("add")
+                           addBook()
                         } label: {
                             Text("Add")
                         }.disabled(newBook.title.isEmpty)
@@ -53,8 +55,14 @@ struct AddBookView: View {
         }
         
     }
+    private func addBook() {
+        if(bookViewModel.addBook(book: newBook)) {
+            showAddBookView.toggle()
+            refreshBookList.toggle()
+        }
+    }
 }
 
 #Preview {
-    AddBookView(bookViewModel: BookViewModel())
+    AddBookView(bookViewModel: BookViewModel(), showAddBookView: .constant(false), refreshBookList: .constant(false))
 }

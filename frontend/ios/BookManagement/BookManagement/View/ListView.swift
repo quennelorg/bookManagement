@@ -10,6 +10,8 @@ import SwiftUI
 struct ListView: View {
     
     @StateObject var bookViewModel: BookViewModel = BookViewModel()
+    @State private var showAddBookView: Bool = false
+    @State private var refreshBookList: Bool = false
     
     var body: some View {
         NavigationView {
@@ -23,12 +25,19 @@ struct ListView: View {
             .toolbar{
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                      print("add")
+                        showAddBookView = true
                     } label: {
                         Image(systemName: "plus")
                     }
                 }
             }
+            .sheet(isPresented: $showAddBookView, content: {
+                AddBookView(
+                    bookViewModel: bookViewModel,
+                    showAddBookView: $showAddBookView,
+                    refreshBookList: $refreshBookList
+                )
+            })
         }
 
 
