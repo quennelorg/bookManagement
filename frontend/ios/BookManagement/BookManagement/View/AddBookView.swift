@@ -13,6 +13,7 @@ struct AddBookView: View {
     @State private var newBook: Book = Book(id: "", title: "", author: "", isbn: "", publishedDate: Date().toString())
     @Binding var showAddBookView: Bool
     @Binding var refreshBookList: Bool
+    @State private var showDirtyCheckAlert: Bool = false
     
     var bindingDate: Binding<Date> {
         Binding<Date>(
@@ -39,9 +40,26 @@ struct AddBookView: View {
                 .toolbar{
                     ToolbarItem(placement: .topBarLeading) {
                         Button {
-                            showAddBookView.toggle()
+                            if(!newBook.title.isEmpty) {
+                                showDirtyCheckAlert.toggle()
+                            } else {
+                                showAddBookView.toggle()
+                            }
                         } label: {
                             Text("Cancel")
+                        }.alert("Save Book", isPresented: $showDirtyCheckAlert) {
+                            Button {
+                                showAddBookView.toggle()
+                            } label: {
+                                Text("Cancel")
+                            }
+                            Button {
+                                addBook()
+                            } label: {
+                                Text("Save")
+                            }
+                        } message: {
+                            Text("Could you like to save the book?")
                         }
                     }
                     ToolbarItem(placement: .topBarTrailing) {

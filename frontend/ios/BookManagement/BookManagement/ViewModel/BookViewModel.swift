@@ -24,12 +24,12 @@ final class BookViewModel: ObservableObject {
     }
     
     func updateBook(book: Book) -> Bool {
-        if let index = tempBook.firstIndex(where: {$0.id == task.id}) {
+        if let index = tempBook.firstIndex(where: {$0.id == book.id}) {
             
-            tempBook[index].title = task.title
-            tempBook[index].author = task.description
-            tempBook[index].isbn = task.isbn
-            tempBook[index].publishedDate = task.publishedDate
+            tempBook[index].title = book.title
+            tempBook[index].author = book.description
+            tempBook[index].isbn = book.isbn
+            tempBook[index].publishedDate = book.publishedDate
             
             return true
         }
@@ -37,7 +37,7 @@ final class BookViewModel: ObservableObject {
     }
     
     func deleteBook(book: Book) -> Bool {
-        if let index = tempBook.firstIndex(where: {$0.id == task.id}) {
+        if let index = tempBook.firstIndex(where: {$0.id == book.id}) {
             tempBook.remove(at: index)
             return true
         }
