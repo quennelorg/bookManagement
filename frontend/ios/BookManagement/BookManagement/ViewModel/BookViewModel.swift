@@ -17,7 +17,30 @@ final class BookViewModel: ObservableObject {
     }
     
     func addBook(book: Book) -> Bool {
-        tempBook.append(book)
+        let id = UUID().uuidString.replacingOccurrences(of: "-", with: "")
+        let newBook = Book(id: id, title: book.title, author: book.author, isbn: book.isbn, publishedDate: book.publishedDate)
+        tempBook.append(newBook)
         return true
+    }
+    
+    func updateBook(book: Book) -> Bool {
+        if let index = tempBook.firstIndex(where: {$0.id == task.id}) {
+            
+            tempBook[index].title = task.title
+            tempBook[index].author = task.description
+            tempBook[index].isbn = task.isbn
+            tempBook[index].publishedDate = task.publishedDate
+            
+            return true
+        }
+        return false
+    }
+    
+    func deleteBook(book: Book) -> Bool {
+        if let index = tempBook.firstIndex(where: {$0.id == task.id}) {
+            tempBook.remove(at: index)
+            return true
+        }
+        return false
     }
 }

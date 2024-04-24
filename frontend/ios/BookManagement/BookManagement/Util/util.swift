@@ -14,6 +14,15 @@ func getRandomColor() -> Color {
     return colors[randomIndex]
 }
 
+func getLimitRange() -> ClosedRange<Date> {
+    let calendar = Calendar.current
+    let currentDateComponent = calendar.dateComponents([.day, .month, .year], from: Date())
+    let endDateComponent = DateComponents(year: currentDateComponent.year, month: currentDateComponent.month, day: currentDateComponent.day)
+    let startDateComponent = DateComponents(year: 1800, month: 1, day: 1)
+    
+    return calendar.date(from: startDateComponent)!...calendar.date(from: endDateComponent)!
+}
+
 extension Date {
     func toString() -> String {
         let dateFormatter = DateFormatter()
