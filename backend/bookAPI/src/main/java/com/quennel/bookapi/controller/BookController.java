@@ -27,7 +27,7 @@ public class BookController {
     }
 
     @DeleteMapping
-    public List<Book> deleteById(@RequestParam Long id) {
-        return bookService.deleteById(id);
+    public void deleteById(@RequestParam String id) {
+         bookService.deleteById(id);
     }
 }
