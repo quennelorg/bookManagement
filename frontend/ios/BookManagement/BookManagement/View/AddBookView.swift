@@ -34,7 +34,7 @@ struct AddBookView: View {
                     TextField("Please input Book ISBN", text: $newBook.isbn)
                 }
                 Section(header: Text("Book PublishedDate")) {
-                    DatePicker("Published Date", selection: bindingDate, displayedComponents: [.date])
+                    DatePicker("Published Date", selection: bindingDate, in: getLimitRange(), displayedComponents: [.date])
                 }
             }.navigationTitle("Add Book")
                 .toolbar{
