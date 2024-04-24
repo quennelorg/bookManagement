@@ -19,6 +19,7 @@
 		53D029402BD919A8008BBFFB /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D0293F2BD919A8008BBFFB /* Book.swift */; };
 		53D029432BD91A40008BBFFB /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D029422BD91A40008BBFFB /* util.swift */; };
 		53D029452BD91AF8008BBFFB /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D029442BD91AF8008BBFFB /* BookViewModel.swift */; };
+		53D029472BD91C54008BBFFB /* AddBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D029462BD91C53008BBFFB /* AddBookView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		53D0293F2BD919A8008BBFFB /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		53D029422BD91A40008BBFFB /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		53D029442BD91AF8008BBFFB /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
+		53D029462BD91C53008BBFFB /* AddBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBookView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 			children = (
 				53D0293B2BD9190D008BBFFB /* ListView.swift */,
 				53D0293D2BD9191D008BBFFB /* ListItemView.swift */,
+				53D029462BD91C53008BBFFB /* AddBookView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				53D029102BD91851008BBFFB /* ContentView.swift in Sources */,
 				53D0290E2BD91851008BBFFB /* BookManagementApp.swift in Sources */,
 				53D0293C2BD9190D008BBFFB /* ListView.swift in Sources */,
+				53D029472BD91C54008BBFFB /* AddBookView.swift in Sources */,
 				53D029432BD91A40008BBFFB /* util.swift in Sources */,
 				53D029402BD919A8008BBFFB /* Book.swift in Sources */,
 				53D0293E2BD9191D008BBFFB /* ListItemView.swift in Sources */,
