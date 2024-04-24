@@ -12,11 +12,17 @@ struct ListView: View {
     @StateObject var bookViewModel: BookViewModel = BookViewModel()
     @State private var showAddBookView: Bool = false
     @State private var refreshBookList: Bool = false
+    @State private var showDetailView: Bool = false
+    @State private var selectedBook: Book = Book(id: "1", title: "", author: "", isbn: "", publishedDate: "")
     
     var body: some View {
         NavigationView {
             List(bookViewModel.books, id:\.id) { item in
                 ListItemView(book: item)
+                    .onTapGesture {
+                        selectedBook = item
+                        showDetailView.toggle()
+                    }
             }
             .onAppear {
                 bookViewModel.getBooks()
@@ -39,6 +45,14 @@ struct ListView: View {
                 AddBookView(
                     bookViewModel: bookViewModel,
                     showAddBookView: $showAddBookView,
+                    refreshBookList: $refreshBookList
+                )
+            })
+            .sheet(isPresented: $showDetailView, content: {
+                DetailView(
+                    bookViewModel: bookViewModel,
+                    showBookDetailView: $showDetailView,
+                    selectedBook: $selectedBook,
                     refreshBookList: $refreshBookList
                 )
             })

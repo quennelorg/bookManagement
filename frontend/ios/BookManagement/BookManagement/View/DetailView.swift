@@ -10,7 +10,7 @@ import SwiftUI
 struct DetailView: View {
     
     @ObservedObject var bookViewModel: BookViewModel
-    @Binding var showBookDetailView: Bool
+    @Binding var showDetailView: Bool
     @Binding var selectedBook: Book
     @Binding var refreshBookList: Bool
     
@@ -38,7 +38,7 @@ struct DetailView: View {
                 Section{
                     Button {
                         if(bookViewModel.deleteBook(book: selectedBook)) {
-                            showBookDetailView.toggle()
+                            showDetailView.toggle()
                             refreshBookList.toggle()
                         }
                         
@@ -53,7 +53,7 @@ struct DetailView: View {
                 .toolbar{
                     ToolbarItem(placement: .topBarLeading) {
                         Button {
-                            showBookDetailView.toggle()
+                            showDetailView.toggle()
                         } label: {
                             Text("Cancel")
                         }
@@ -61,7 +61,7 @@ struct DetailView: View {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button {
                             if(bookViewModel.updateBook(book: selectedBook)) {
-                                showBookDetailView.toggle()
+                                showDetailView.toggle()
                                 refreshBookList.toggle()
                             }
                         } label: {
@@ -75,9 +75,9 @@ struct DetailView: View {
 }
 
 #Preview {
-    BookDetailView(
+    DetailView(
         bookViewModel: BookViewModel(),
-        showBookDetailView: .constant(false),
+        showDetailView: .constant(false),
         selectedBook: .constant(mockBook[0]),
         refreshBookList: .constant(false)
     )
