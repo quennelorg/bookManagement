@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct ListView: View {
+    
+    @StateObject var bookViewModel: BookViewModel = BookViewModel()
+    
     var body: some View {
-        List(mockBook, id:\.id) { item in
+        List(bookViewModel.books, id:\.id) { item in
             ListItemView(book: item)
+        }.onAppear {
+            bookViewModel.getBooks()
         }
     }
 }
