@@ -12,11 +12,26 @@ struct ListView: View {
     @StateObject var bookViewModel: BookViewModel = BookViewModel()
     
     var body: some View {
-        List(bookViewModel.books, id:\.id) { item in
-            ListItemView(book: item)
-        }.onAppear {
-            bookViewModel.getBooks()
+        NavigationView {
+            List(bookViewModel.books, id:\.id) { item in
+                ListItemView(book: item)
+            }.onAppear {
+                bookViewModel.getBooks()
+            }
+            .listStyle(.plain)
+            .navigationTitle("My Books")
+            .toolbar{
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                      print("add")
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
         }
+
+
     }
 }
 
