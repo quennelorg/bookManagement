@@ -27,7 +27,7 @@ final class BookViewModel: ObservableObject {
         if let index = tempBook.firstIndex(where: {$0.id == book.id}) {
             
             tempBook[index].title = book.title
-            tempBook[index].author = book.description
+            tempBook[index].author = book.author
             tempBook[index].isbn = book.isbn
             tempBook[index].publishedDate = book.publishedDate
             
