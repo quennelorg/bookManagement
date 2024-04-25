@@ -40,6 +40,13 @@ struct ListView: View {
                         Image(systemName: "plus")
                     }
                 }
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        refreshBookList = true
+                    } label: {
+                        Image(systemName: "square.and.arrow.down")
+                    }
+                }
             }
             .sheet(isPresented: $showAddBookView, content: {
                 AddBookView(
