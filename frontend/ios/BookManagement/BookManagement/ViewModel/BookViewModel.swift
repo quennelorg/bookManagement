@@ -8,7 +8,7 @@
 import Foundation
 
 final class BookViewModel: ObservableObject {
-    static let url = URL(string: "http://13.55.148.191:8080/book")!
+    static let url = URL(string: "http://54.252.188.162:8080/book")!
     @Published var books: [Book] = []
     
     private var tempBook: [Book] = []
